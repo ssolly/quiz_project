@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jsp_project/login/login_main.jsp</title>
+<title>member/login</title>
 <style type="text/css">
 	table {margin:auto; margin-top:20px;}
 	table tr td {padding:2px 8px;}
@@ -28,7 +28,7 @@
 		</c:otherwise>
 	</c:choose>
 	 -->
-		<form action="login.jsp" method="post">
+		<form action="successLogin" method="post">
 			<table>
 				<tr>
 					<td><b>ID</b></td>
@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td><b>PASSWORD</b></td>
-					<td> <input type="password" name="pwd" placeholder="input password"></td>
+					<td> <input type="password" name="pw" placeholder="input password"></td>
 				</tr>
 				<tr>
 					<td colspan="3">

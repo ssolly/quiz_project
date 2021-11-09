@@ -1,1 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.member.MemberMapper">	<!-- MemberDAO클래스와 연결 -->
+
+	<resultMap id="member" type="com.care.root.member.dto.MemberDTO">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="addr" column="addr" />
+	</resultMap>
+	
+	<select id="loginChk" resultMap="member">
+		select * from membership where id=#{id}
+	</select>
+	
+</mapper>

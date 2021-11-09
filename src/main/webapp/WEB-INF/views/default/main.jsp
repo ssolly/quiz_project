@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jsp_project/default/main.jsp</title>
+<title>default/main</title>
 <style type="text/css">
 	.mainTable {margin: auto; margin-top:20px;}
 	.mainTable td {text-align: center;}

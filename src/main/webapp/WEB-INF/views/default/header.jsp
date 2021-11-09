@@ -24,15 +24,15 @@
 <body>
 	<div class="wrap">
 		<div class="header"> 
-			<h1 class="title" onclick="location.href='${contextPath}/default/main.jsp'">CARE LAB</h1>
+			<h1 class="title" onclick="location.href='index'">CARE LAB</h1>
 		</div>
 	</div>
 	<div class="navdiv">
 		<div class="wrap">
 			<nav>
 				<ul>
-					<li><a href="${contextPath }/default/main.jsp">HOME</a></li>
-					<li><a href="${contextPath }/default/login.jsp">LOGIN</a></li>
+					<li><a href="index">HOME</a></li>
+					<li><a href="login">LOGIN</a></li>
 				</ul>
 			</nav>
 		</div>
