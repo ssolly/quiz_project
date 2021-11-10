@@ -47,7 +47,12 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int register(MemberDTO dto) {
 		int result=0;
-		result=mapper.register(dto);
+		try {
+			result=mapper.register(dto);
+		} catch (Exception e) {
+			e.printStackTrace();	
+			
+		}
 		return result;
 	}
 }
