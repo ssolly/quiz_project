@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,15 +26,25 @@
 <body>
 	<div class="wrap">
 		<div class="header"> 
-			<h1 class="title" onclick="location.href='index'">CARE LAB</h1>
+			<h1 class="title" onclick="location.href='${contextPath}/index'">CARE LAB</h1>
 		</div>
 	</div>
 	<div class="navdiv">
 		<div class="wrap">
 			<nav>
 				<ul>
-					<li><a href="index">HOME</a></li>
-					<li><a href="login">LOGIN</a></li>
+					<li><a href="${contextPath }/index">HOME</a></li>
+					<li><a href="membership">MEMBERSHIP</a>
+					<li>
+						<c:choose>
+							<c:when test="${loginUser!=null }">	<!-- 세션이 있다면 -->
+								<a href="${contextPath }/member/logout">LOGOUT</a>
+							</c:when>
+							<c:otherwise>	<!-- 세션이 없다면 -->
+								<a href="${contextPath }/member/login">LOGIN</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
 				</ul>
 			</nav>
 		</div>

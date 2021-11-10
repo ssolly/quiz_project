@@ -28,7 +28,7 @@
 		</c:otherwise>
 	</c:choose>
 	 -->
-		<form action="successLogin" method="post">
+		<form action="${contextPath }/member/user_check" method="post">
 			<table>
 				<tr>
 					<td><b>ID</b></td>

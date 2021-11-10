@@ -8,6 +8,7 @@
 <title>member/successLogin</title>
 <style type="text/css">
 	h3 {color:#702727; }
+	label {color:#702727;}
 </style>
 </head>
 <body>
@@ -15,6 +16,7 @@
 	<div class="wrap">
 	
 	<h3>로그인 성공</h3>
+	<label> ${loginUser }님 환영합니다! </label>
 	
 	</div>
 	<c:import url="../default/footer.jsp"/>

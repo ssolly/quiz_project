@@ -6,13 +6,19 @@
 <mapper namespace="com.care.root.mybatis.member.MemberMapper">	<!-- MemberDAO클래스와 연결 -->
 
 	<resultMap id="member" type="com.care.root.member.dto.MemberDTO">
-		<result property="id" column="id" />
+		<id property="id" column="id" /> <!-- primarykey는 id로 지정 -->
 		<result property="pw" column="pw" />
 		<result property="addr" column="addr" />
 	</resultMap>
 	
+	<!-- my version
 	<select id="loginChk" resultMap="member">
 		select * from membership where id=#{id}
 	</select>
+	 -->
+	
+	<select id="userCheck" resultMap="member">	<!-- resultMap : return type -->
+		select * from membership where id=#{id}
+	</select> 
 	
 </mapper>

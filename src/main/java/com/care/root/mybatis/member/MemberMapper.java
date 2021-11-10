@@ -8,5 +8,10 @@ import com.care.root.member.dto.MemberDTO;
 
 @Repository
 public interface MemberMapper {
-	public MemberDTO loginChk(String id);
+	
+	// myversion
+	//public MemberDTO loginChk(String id);
+	
+	public MemberDTO userCheck(String id);
+	
 }

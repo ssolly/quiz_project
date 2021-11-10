@@ -6,6 +6,9 @@ import com.care.root.member.dto.MemberDTO;
 
 public interface MemberService {
 	
-	public int loginChk(String id, String pw);
+	//myversion
+	//public int loginChk(String id, String pw);
+	
+	public int userCheck(String id, String pw);
 	
 }
