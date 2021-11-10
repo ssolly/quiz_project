@@ -24,4 +24,8 @@
 	<select id="memberInfo" resultMap="member">
 		select * from membership
 	</select>
+	
+	<insert id="register">
+		insert into membership values(#{id}, #{pw}, #{addr})
+	</insert>
 </mapper>

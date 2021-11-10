@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.care.root.common.MemberSessionName;
+import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 
 @Controller
@@ -73,5 +74,19 @@ public class MemberController implements MemberSessionName {
 	public String info(@RequestParam String id, Model model) {	//개인의 정보를 info.jsp로 넘겨주기 위한 model
 		ms.info(model,id);
 		return "member/info";
+	}
+	
+	@GetMapping("register_form")
+	public String registerForm() {
+		return "member/register";
+	}
+	
+	@PostMapping("register")
+	public String register(MemberDTO dto) {
+		int result = ms.register(dto);
+		if(result==1) {	//회원가입성공
+			return "redirect:login";
+		}
+		return "redirect:register_form";
 	}
 }

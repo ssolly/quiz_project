@@ -14,4 +14,5 @@ public interface MemberMapper {
 	
 	public MemberDTO userCheck(String id);
 	public ArrayList<MemberDTO> memberInfo();
+	public int register(MemberDTO dto);
 }
