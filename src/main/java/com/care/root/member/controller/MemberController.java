@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,5 +61,17 @@ public class MemberController implements MemberSessionName {
 			session.invalidate();
 		}
 		return "redirect:/index";		// '/'로 최상위부터 연결
+	}
+	
+	@GetMapping("memberInfo")
+	public String memberInfo(Model model) {	//jsp파일까지 전달해야하기 때문에 model 객체 사용
+		ms.memberInfo(model);
+		return "member/memberinfo";
+	}
+	
+	@GetMapping("info")
+	public String info(@RequestParam String id, Model model) {	//개인의 정보를 info.jsp로 넘겨주기 위한 model
+		ms.info(model,id);
+		return "member/info";
 	}
 }

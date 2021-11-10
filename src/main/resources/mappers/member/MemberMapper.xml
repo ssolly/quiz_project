@@ -21,4 +21,7 @@
 		select * from membership where id=#{id}
 	</select> 
 	
+	<select id="memberInfo" resultMap="member">
+		select * from membership
+	</select>
 </mapper>

@@ -13,5 +13,5 @@ public interface MemberMapper {
 	//public MemberDTO loginChk(String id);
 	
 	public MemberDTO userCheck(String id);
-	
+	public ArrayList<MemberDTO> memberInfo();
 }

@@ -34,7 +34,16 @@
 			<nav>
 				<ul>
 					<li><a href="${contextPath }/index">HOME</a></li>
-					<li><a href="membership">MEMBERSHIP</a>
+					<li>
+						<c:choose>
+							<c:when test="${loginUser!=null }">	<!-- 세션이 있다면 -->
+								<a href="${contextPath }/member/memberInfo">MEMBERSHIP</a>
+							</c:when>
+							<c:otherwise>	<!-- 세션이 없다면 -->
+								<a href="${contextPath }/member/login">MEMBERSHIP</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
 					<li>
 						<c:choose>
 							<c:when test="${loginUser!=null }">	<!-- 세션이 있다면 -->
