@@ -36,12 +36,21 @@ function daumPost() {
         }
     }).open();
 }
+
+function register(){
+    addr1 = $("#addr1").val()
+	addr2 = $("#addr2").val()
+	addr3 = $("#addr3").val()
+	addr = addr1 +"/" +addr2 + "/" +addr3
+	$("#addr1").val(addr)
+	fo.submit()
+}
 </script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">	
-		<form action="register" method="post">
+		<form action="register" method="post" id="fo">
 			<table>
 				<tr>
 					<td><b>ID</b></td>
@@ -65,7 +74,8 @@ function daumPost() {
 					<td><input type="button" onclick="daumPost()" value="우편번호찾기" style="background-color:#DFC8C8;"></td>
 				</tr>
 				<tr>
-					<td colspan="3"><input type="submit" value="회원가입" style="background-color:#D2B3B3;"></td>
+					<!-- <td colspan="3"><input type="submit" value="회원가입" style="background-color:#D2B3B3;"></td> -->
+					<td colspan="3"><input type="button" onclick="register()" value="회원가입" style="background-color:#D2B3B3;"></td>
 			</table>
 		</form>
 	</div>
