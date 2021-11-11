@@ -65,9 +65,13 @@ public class MemberController implements MemberSessionName {
 	}
 	
 	@GetMapping("memberInfo")
-	public String memberInfo(Model model) {	//jsp파일까지 전달해야하기 때문에 model 객체 사용
-		ms.memberInfo(model);
-		return "member/memberinfo";
+	public String memberInfo(Model model, HttpSession session) {	//jsp파일까지 전달해야하기 때문에 model 객체 사용
+		if(session.getAttribute(LOGIN) != null) {
+			ms.memberInfo(model);
+			return "member/memberinfo";
+		} 
+		return "redirect:login";
+		
 	}
 	
 	@GetMapping("info")

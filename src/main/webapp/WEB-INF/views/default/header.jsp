@@ -35,6 +35,7 @@
 				<ul>
 					<li><a href="${contextPath }/index">HOME</a></li>
 					<li>
+					<%-- 
 						<c:choose>
 							<c:when test="${loginUser!=null }">	<!-- 세션이 있다면 -->
 								<a href="${contextPath }/member/memberInfo">MEMBERSHIP</a>
@@ -43,6 +44,8 @@
 								<a href="${contextPath }/member/login">MEMBERSHIP</a>
 							</c:otherwise>
 						</c:choose>
+					 --%>
+					 	<a href="${contextPath }/member/memberInfo">MEMBERSHIP</a>
 					</li>
 					<li>
 						<c:choose>
