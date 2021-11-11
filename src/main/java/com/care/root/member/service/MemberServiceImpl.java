@@ -23,8 +23,9 @@ public class MemberServiceImpl implements MemberService{
 	public int userCheck(String id, String pw) {
 		MemberDTO dto = mapper.userCheck(id);
 		if (dto!=null) { //해당 아이디 존재
-			///*암호화 전*/if(pw.equals(dto.getPw())) { //로그인 성공
-			if(encoder.matches(pw, dto.getPw())) {	//(사용자가 입력한 값, DB에서 가져온 값)순서
+			///*암호화 전*/ if(pw.equals(dto.getPw())) { //로그인 성공
+			///*암호화 후*/ if(encoder.matches(pw, dto.getPw())) {	//(사용자가 입력한 값, DB에서 가져온 값)순서
+			if(encoder.matches(pw, dto.getPw()) || pw.equals(dto.getPw())) {
 				return 0;
 			}	//로그인 실패 : 비밀번호 다름
 		}
