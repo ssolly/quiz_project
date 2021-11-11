@@ -26,11 +26,19 @@
 	<beans:bean id="memberInterceptor" class="com.care.root.member.interceptor.MemberInterceptor"/>
 	<!-- id : bean의 이름(변수명과 같음) , class:자료형 -->
 	
+	<!-- 연습용 -->
+	<beans:bean id="bti" class="com.care.root.testboard.BoardTestInterceptor" />
+	
 	<interceptors>
 		<interceptor>
 			<!-- <mapping path="/index"/>  -->	<!-- index가 요청이 되면 memberInterceptor를 동작시켜라 -->
 			<mapping path="/member/memberInfo" />	<!-- memberInfo를 요청하면 memberInterceptor를 먼저 확인 -->
 			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		<!-- 연습용 -->
+		<interceptor>
+			<mapping path="/test/board" />
+			<beans:ref bean="bti" />
 		</interceptor>
 	</interceptors>
 	
