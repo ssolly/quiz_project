@@ -13,30 +13,10 @@
 	form input{margin-top:10px; margin-left:8px;}
 	table tr td b{color:#702727;}
 </style>
+<script src="<%=request.getContextPath()%>/resources/js/daumpost.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	<!-- jquery -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-function daumPost() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            console.log("data.userSelectType : " + data.userSelectedType)
-            console.log("data.roadAddress : " + data.roadAddress)
-            console.log("data.jibunAddress : " + data.jibunAddress)
-            console.log("data.zoneconde(우편번호) : " + data.zonecode)
-            //문장을 하나로 합치기 위해 변수 생성
-            var addr=""
-            if(data.userSelectedType === 'R') { //도로명
-            	addr = data.roadAddress
-            } else {	//지번
-            	addr = data.jibunAddress
-            }
-            $("#addr1").val(data.zonecode)
-            $("#addr2").val(addr)
-            $("#addr3").focus()
-        }
-    }).open();
-}
-
 function register(){
     addr1 = $("#addr1").val()
 	addr2 = $("#addr2").val()
