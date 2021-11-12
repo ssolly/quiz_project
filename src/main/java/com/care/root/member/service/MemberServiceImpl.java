@@ -83,4 +83,10 @@ public class MemberServiceImpl implements MemberService{
 		map.put("id", id);
 		mapper.keepLogin(map);
 	}
+
+	@Override
+	public MemberDTO getUserSessionId(String sessionId) {
+		
+		return mapper.getUserSessionId(sessionId);
+	}
 }

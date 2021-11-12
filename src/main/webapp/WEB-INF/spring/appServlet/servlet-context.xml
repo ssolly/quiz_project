@@ -26,6 +26,8 @@
 	<beans:bean id="memberInterceptor" class="com.care.root.member.interceptor.MemberInterceptor"/>
 	<!-- id : bean의 이름(변수명과 같음) , class:자료형 -->
 	
+	<beans:bean id="autoLogin" class="com.care.root.member.interceptor.AutoLoginInterceptor" />
+	
 	<!-- 연습용 -->
 	<beans:bean id="bti" class="com.care.root.testboard.BoardTestInterceptor" />
 	
@@ -35,6 +37,12 @@
 			<mapping path="/member/memberInfo" />	<!-- memberInfo를 요청하면 memberInterceptor를 먼저 확인 -->
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
+		
+		<interceptor>	<!-- 사용자가 /index를 요청하면 autoLogin bean을 확인 -->
+			<mapping path="/index"/>
+			<beans:ref bean="autoLogin" />
+		</interceptor>
+		
 		<!-- 연습용 -->
 		<interceptor>
 			<mapping path="/test/board" />

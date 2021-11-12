@@ -17,4 +17,6 @@ public interface MemberMapper {
 	public ArrayList<MemberDTO> memberInfo();
 	public int register(MemberDTO dto);
 	public void keepLogin(Map<String,Object> map);
+	public MemberDTO getUserSessionId(String sessionID);
+	
 }
