@@ -85,18 +85,18 @@ public class MemberController implements MemberSessionName {
 	}
 	
 	@GetMapping("logout")
-	public String logout(HttpSession session, HttpServletResponse response, 
+	public String logout(HttpSession session, HttpServletResponse response,
 		/*자동로그인 해제를 위한*/ @CookieValue(value="loginCookie",required=false) Cookie loginCookie) {
-		
 		if(session.getAttribute(LOGIN)!=null) {
 			if(loginCookie != null) {
+				loginCookie.setPath("/");			//현재 매핑이 /member/*로 되어있기 때문에 최상위에서 쿠키를 삭제해주기 위해 필요
 				loginCookie.setMaxAge(0);			//시간을 0으로 세팅 -> 소멸
 				response.addCookie(loginCookie);	//사용자에게 쿠키 전달
 				ms.keepLogin("nan", new java.sql.Date(System.currentTimeMillis()), (String)session.getAttribute(LOGIN));	
 				//nan : db의 cookie값의 default값, 									↑session값
 			}
-			session.invalidate();
 		}
+		session.invalidate();
 		return "redirect:/index";		// '/'로 최상위부터 연결
 	}
 	
