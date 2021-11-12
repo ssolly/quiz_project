@@ -11,7 +11,7 @@
 
 <c:import url="../default/header.jsp"/>
 
-<h1>연습용 board 연결</h1>
+<h2>연습용 board 연결</h2>
 
 <c:import url="../default/footer.jsp"/>
 

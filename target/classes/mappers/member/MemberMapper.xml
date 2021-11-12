@@ -6,9 +6,12 @@
 <mapper namespace="com.care.root.mybatis.member.MemberMapper">	<!-- MemberDAO클래스와 연결 -->
 
 	<resultMap id="member" type="com.care.root.member.dto.MemberDTO">
-		<id property="id" column="id" /> <!-- primarykey는 id로 지정 -->
+	<!-- primarykey는 id로 지정, property:javaDTO 변수명, column:DB의 컬럼명 -->
+		<id property="id" column="id" /> 
 		<result property="pw" column="pw" />
 		<result property="addr" column="addr" />
+		<result property="limitTime" column="limit_time"/>
+		<result property="sessionId" column="session_id" />
 	</resultMap>
 	
 	<!-- my version
@@ -28,4 +31,8 @@
 	<insert id="register">
 		insert into membership values(#{id}, #{pw}, #{addr})
 	</insert>
+	
+	<update id="keepLogin">
+		update membership set session_id=#{sessionId}, limit_time=#{limitDate} where id=#{id}
+	</update>
 </mapper>

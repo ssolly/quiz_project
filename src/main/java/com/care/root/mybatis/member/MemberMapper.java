@@ -1,6 +1,7 @@
 package com.care.root.mybatis.member;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,5 @@ public interface MemberMapper {
 	public MemberDTO userCheck(String id);
 	public ArrayList<MemberDTO> memberInfo();
 	public int register(MemberDTO dto);
+	public void keepLogin(Map<String,Object> map);
 }

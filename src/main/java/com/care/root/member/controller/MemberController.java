@@ -1,5 +1,10 @@
 package com.care.root.member.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +43,15 @@ public class MemberController implements MemberSessionName {
 //	}
 	
 	@PostMapping("/user_check")
-	public String userCheck(@RequestParam String id, @RequestParam String pw, RedirectAttributes rs){
+	public String userCheck(@RequestParam String id, @RequestParam String pw, 
+							@RequestParam(required=false) String autoLogin, RedirectAttributes rs){
+							//check가 되어 있지 않으면 null값
+		//System.out.println("autoLogin : " + autoLogin); 	// on ↔ null
 		int result = ms.userCheck(id,pw);
 		if(result==0) {
 			//성공일 때
 			rs.addAttribute("id",id);	//jsp파일까지 연결가능, session을 만들기 위함
+			rs.addAttribute("autoLogin",autoLogin);	//로그인에 성공했다면 
 			return "redirect:successLogin";
 		} else {
 			//실패일 때
@@ -51,8 +60,26 @@ public class MemberController implements MemberSessionName {
 	}
 	
 	@GetMapping("/successLogin")
-	public String successLogin(@RequestParam String id, HttpSession session) {
+	public String successLogin(@RequestParam String id, @RequestParam(required=false) String autoLogin,
+								HttpSession session, HttpServletResponse response/*쿠키:자동로그인*/) {
+		System.out.println("id : " + id);
+		System.out.println("autoLogin : " + autoLogin);
 		session.setAttribute(/*상속 받기 전 MemberSessionName.LOGIN*/ LOGIN, id);		//session 세팅
+		
+		if(autoLogin != null) { //사용자가 자동로그인을 체크했다면
+			int limitTime = 60*60*24*90;	//90일
+			Cookie loginCookie = new Cookie("loginCookie",session.getId()); //value:session.getId() id값이 유일한 값이기 떄문
+			loginCookie.setPath("/");
+			loginCookie.setMaxAge(limitTime);
+			response.addCookie(loginCookie);
+			
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());	//java.util.Date
+			cal.add(Calendar.MONTH, 3);	//3개월후로 세팅
+			java.sql.Date limitDate = new java.sql.Date(cal.getTimeInMillis());		//util.Date -> sql.Date로 변환
+			
+			ms.keepLogin(session.getId(),limitDate,id);	//DB로 연결해주는 서비스
+		}
 		return "member/successLogin";
 	}
 	

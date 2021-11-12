@@ -51,6 +51,9 @@
 						<a href="${contextPath }/test/board">BOARD</a>
 					</li>
 					<li>
+						<a href="${contextPath }/test/write">WRITE</a>
+					</li>
+					<li>
 						<c:choose>
 							<c:when test="${loginUser!=null }">	<!-- 세션이 있다면 -->
 								<a href="${contextPath }/member/logout">LOGOUT</a>

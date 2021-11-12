@@ -38,6 +38,7 @@
 		<!-- 연습용 -->
 		<interceptor>
 			<mapping path="/test/board" />
+			<mapping path="/test/write" />
 			<beans:ref bean="bti" />
 		</interceptor>
 	</interceptors>

@@ -12,7 +12,8 @@
 	table tr td {padding:2px 8px;}
 	table tr td b{color:#702727; padding:2px 8px;} 
 	table label{font-size:13px; color:#702727;}
-	.mem_reg{margin-left:70px;}
+	.chkBox{font-size:13px; color:#702727;margin-left:10px;}
+	<%--.mem_reg{margin-left:30px;} --%>
 	.btn_login{padding:14px 9px; background-color:#D2B3B3;}
 </style>
 </head>
@@ -31,9 +32,10 @@
 					<td> <input type="password" name="pw" placeholder="input password"></td>
 				</tr>
 				<tr>
-					<td colspan="3">
+					<td colspan="3" style="text-align: right;">
 						<label class="mem_reg" onclick="location.href='register_form'">회원가입</label> &ensp; <label>아이디/비밀번호 찾기</label>
 						<!-- label안쓰고 바로 a href 사용해도 된다 -->
+						<input type="checkbox" name="autoLogin" class="chkBox"><label>자동로그인</label>  &ensp;
 					</td>
 				</tr>
 			</table>

@@ -10,4 +10,9 @@ public class BoardTest {
 	public String testBoard() {
 		return "test/board";
 	}
+	
+	@GetMapping("test/write")
+	public String testWrite() {
+		return "test/board";
+	}
 }
