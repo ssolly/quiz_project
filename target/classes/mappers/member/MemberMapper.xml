@@ -29,7 +29,8 @@
 	</select>
 	
 	<insert id="register">
-		insert into membership values(#{id}, #{pw}, #{addr})
+		insert into membership(id,pw,addr) values(#{id}, #{pw}, #{addr})
+		<!-- column이 추가되면서 값을 넣어줄 때 지정해주어야함 -->
 	</insert>
 	
 	<update id="keepLogin">
